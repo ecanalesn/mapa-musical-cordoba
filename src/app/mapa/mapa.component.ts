@@ -41,7 +41,10 @@ function contenidoPopup({ properties: p, geometry }: Lugar): string {
   const [lon, lat] = geometry.coordinates;
   const cat = CATEGORIAS.find((c) => c.id === p.categoria)!;
   const filas = [
-    p.direccion && `<dt>Dirección</dt><dd>${escapar(p.direccion)}</dd>`,
+    p.direccion &&
+      `<dt>Dirección</dt><dd>${escapar(p.direccion)}${
+        p.precision === 'calle' ? '<br><small class="ficha__aviso">Ubicación aproximada (a nivel de calle)</small>' : ''
+      }</dd>`,
     `<dt>Ámbito</dt><dd>${escapar(etiquetaAmbito(p.ambito))}</dd>`,
     p.titularidad && `<dt>Titularidad</dt><dd>${escapar(p.titularidad)}</dd>`,
     p.telefono &&

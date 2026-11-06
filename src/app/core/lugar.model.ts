@@ -19,10 +19,14 @@ export interface LugarProps {
   web?: string;
   telefono?: string;
   titularidad?: 'pública' | 'privada';
+  /** Precisión de la geocodificación: portal exacto o solo a nivel de calle. */
+  precision?: Precision;
   /** Referencia al elemento de OpenStreetMap, p. ej. "node/123" o "way/456". */
   osm?: string;
   fuente: Fuente;
 }
+
+export type Precision = 'portal' | 'calle';
 
 /** Un lugar es un Feature GeoJSON de tipo Point. Coordenadas en [lon, lat] (WGS84). */
 export type Lugar = Feature<Point, LugarProps>;
@@ -45,6 +49,7 @@ export interface EscuelaDto {
   web?: string;
   telefono?: string;
   titularidad?: 'pública' | 'privada';
+  precision?: Precision;
   osm?: string;
 }
 

@@ -66,17 +66,18 @@ La API REST simula el contrato de un backend Java/Spring Boot: devuelve un JSON 
 
 ## Datos
 
-- Coordenadas y atributos extraídos de **OpenStreetMap** mediante la Overpass API. Cada lugar enlaza a su elemento OSM de origen.
-- Datos © colaboradores de OpenStreetMap, bajo licencia [ODbL](https://www.openstreetmap.org/copyright).
+- **Conservatorios y salas:** coordenadas y atributos extraídos de **OpenStreetMap** con la Overpass API. Cada lugar enlaza a su elemento OSM de origen. Datos © colaboradores de OpenStreetMap, bajo licencia [ODbL](https://www.openstreetmap.org/copyright).
+- **Escuelas de música:** casi no están cartografiadas en OSM. Se inventariaron a partir de sus fichas públicas y se geocodificaron con **[CartoCiudad](https://www.cartociudad.es/)** (IGN), que resuelve las direcciones a nivel de portal.
+  - El campo `precision` indica si el punto es el portal exacto (`portal`) o solo la calle (`calle`, por ejemplo en direcciones «s/n»).
+  - En la ficha del mapa, los puntos a nivel de calle aparecen como «ubicación aproximada».
 - Sistema de referencia: WGS84 (EPSG:4326); orden de coordenadas GeoJSON `[longitud, latitud]`.
-- Limitación conocida: las escuelas de música privadas están poco cartografiadas en OSM, por lo que esa capa tiene pocos elementos. Ampliarla es una de las mejoras previstas.
 
 ## Mejoras previstas
 
 - Backend real en Spring Boot + PostGIS sirviendo las capas (consultas espaciales por radio o por distrito).
 - Publicación de las capas como WFS en GeoServer.
 - Agrupación de marcadores (clustering) y capa de distritos municipales.
-- Ampliar el inventario de escuelas de música y añadir agenda de conciertos.
+- Formulario para que las escuelas soliciten su alta o corrijan sus datos, y agenda de conciertos.
 
 ## Autoría
 

@@ -37,15 +37,19 @@ Contrato de la API (`GET /escuelas` → `200 OK`):
     "longitud": -4.78767,
     "subtipo": "Academia de música",
     "ambito": "multidisciplinar",
-    "direccion": "C/ Virgen del Perpetuo Socorro, 2",
+    "direccion": "C/ Virgen del Perpetuo Socorro, 2-A",
     "web": "https://academiacordobamusic.com/",
+    "telefono": "+34 644 408 802",
     "titularidad": "privada",
+    "precision": "portal",
     "osm": "node/9447996000"
   }
 ]
 ```
 
-Campos obligatorios: `id`, `nombre`, `latitud`, `longitud`, `subtipo`, `ambito`. `ambito` ∈ {`clasica`, `danza`, `flamenco`, `jazz`, `pop-rock`, `multidisciplinar`}.
+Campos obligatorios: `id`, `nombre`, `latitud`, `longitud`, `subtipo`, `ambito`. `ambito` ∈ {`clasica`, `danza`, `flamenco`, `jazz`, `pop-rock`, `multidisciplinar`}. `precision` ∈ {`portal`, `calle`}.
+
+Las escuelas se geocodificaron con CartoCiudad (IGN). Cuando la dirección no tiene número («s/n») o el portal no existe en el callejero, el punto se sitúa en la calle y se marca `precision: "calle"`.
 
 ## 5. Historias de usuario
 
@@ -88,6 +92,11 @@ Escenario: Abrir ficha
   Y, si existen, dirección, titularidad, teléfono y web oficial
   Y siempre un enlace "Cómo llegar" y otro "Ver en OSM"
   Y los campos sin dato no se muestran (no aparecen vacíos)
+
+Escenario: Ubicación aproximada
+  Dado un lugar con precisión "calle"
+  Cuando abro su ficha
+  Entonces bajo la dirección aparece "Ubicación aproximada (a nivel de calle)"
 ```
 
 ### HU-04 · Buscar por nombre o dirección
@@ -182,10 +191,11 @@ Escenario: Plegar panel
 
 | ID | HU | Caso | Resultado esperado | Estado |
 |---|---|---|---|---|
-| PF-01 | HU-01 | Abrir la aplicación | 15 marcadores; contadores 3 / 1 / 11 | OK |
-| PF-02 | HU-02 | Desmarcar "Salas de concierto" | Quedan 4 resultados | OK |
+| PF-01 | HU-01 | Abrir la aplicación | 26 marcadores; contadores 3 / 12 / 11 | OK |
+| PF-02 | HU-02 | Desmarcar "Salas de concierto" | Quedan 15 resultados | OK |
 | PF-03 | HU-04 | Buscar "gongora" | 1 resultado: Teatro Góngora | OK (prueba unitaria) |
-| PF-04 | HU-05 | Ámbito "Flamenco" | 1 resultado: Centro Flamenco Fosforito | — |
+| PF-04 | HU-05 | Ámbito "Flamenco" | 4 resultados: Fosforito, Yocanto, Paco Navarro, Aflamencar | — |
 | PF-05 | HU-05 | "Flamenco" + buscar "teatro" | 0 resultados, mensaje de lista vacía | OK (prueba unitaria) |
-| PF-06 | HU-08 | Arrancar sin `npm run api` | Aviso de copia local; 1 escuela visible | — |
+| PF-06 | HU-08 | Arrancar sin `npm run api` | Aviso de copia local; 12 escuelas visibles | — |
+| PF-08 | HU-03 | Abrir ficha de "Aflamencar" | Aviso "Ubicación aproximada" bajo la dirección | — |
 | PF-07 | HU-09 | Ancho 390 px | Sin desplazamiento horizontal; botón "Ocultar" visible | OK |
