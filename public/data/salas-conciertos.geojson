@@ -1,0 +1,163 @@
+{
+  "type": "FeatureCollection",
+  "name": "salas_conciertos",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-4.78257, 37.88533] },
+      "properties": {
+        "id": "gran-teatro",
+        "nombre": "Gran Teatro de Córdoba",
+        "categoria": "sala",
+        "subtipo": "Teatro",
+        "ambito": "multidisciplinar",
+        "direccion": "Av. del Gran Capitán, 3",
+        "web": "https://teatrocordoba.es/",
+        "titularidad": "pública",
+        "osm": "way/36784051"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-4.78015, 37.88356] },
+      "properties": {
+        "id": "teatro-gongora",
+        "nombre": "Teatro Góngora",
+        "categoria": "sala",
+        "subtipo": "Teatro",
+        "ambito": "multidisciplinar",
+        "direccion": "C/ Jesús y María, 10",
+        "web": "https://teatrocordoba.es/",
+        "titularidad": "pública",
+        "osm": "way/210262204"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-4.78772, 37.87345] },
+      "properties": {
+        "id": "teatro-axerquia",
+        "nombre": "Teatro de la Axerquía",
+        "categoria": "sala",
+        "subtipo": "Auditorio al aire libre",
+        "ambito": "pop-rock",
+        "web": "https://teatrocordoba.es/",
+        "titularidad": "pública",
+        "osm": "way/210979082"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-4.78082, 37.87859] },
+      "properties": {
+        "id": "palacio-congresos",
+        "nombre": "Palacio de Congresos y Exposiciones de Córdoba",
+        "categoria": "sala",
+        "subtipo": "Auditorio",
+        "ambito": "multidisciplinar",
+        "direccion": "C/ Torrijos, 10",
+        "web": "https://palaciodecongresosdecordoba.es/",
+        "telefono": "+34 957 490 296",
+        "titularidad": "pública",
+        "osm": "relation/19019994"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-4.77465, 37.88537] },
+      "properties": {
+        "id": "sala-orive",
+        "nombre": "Sala Orive",
+        "categoria": "sala",
+        "subtipo": "Espacio escénico",
+        "ambito": "multidisciplinar",
+        "direccion": "Plaza de Orive",
+        "titularidad": "pública",
+        "osm": "way/296221263"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-4.77491, 37.88097] },
+      "properties": {
+        "id": "centro-flamenco-fosforito",
+        "nombre": "Centro Flamenco Fosforito",
+        "categoria": "sala",
+        "subtipo": "Centro de flamenco",
+        "ambito": "flamenco",
+        "direccion": "Plaza del Potro",
+        "web": "https://centroflamencofosforito.cordoba.es/",
+        "titularidad": "pública",
+        "osm": "node/4219174990"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-4.77714, 37.88274] },
+      "properties": {
+        "id": "teatro-comico-principal",
+        "nombre": "Teatro Cómico Principal",
+        "categoria": "sala",
+        "subtipo": "Teatro",
+        "ambito": "multidisciplinar",
+        "osm": "node/13076858326"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-4.76741, 37.88898] },
+      "properties": {
+        "id": "teatro-avanti",
+        "nombre": "Teatro Avanti",
+        "categoria": "sala",
+        "subtipo": "Teatro",
+        "ambito": "multidisciplinar",
+        "osm": "way/99906014"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-4.77171, 37.87572] },
+      "properties": {
+        "id": "c3a",
+        "nombre": "Centro de Creación Contemporánea de Andalucía (C3A)",
+        "categoria": "sala",
+        "subtipo": "Centro de arte contemporáneo",
+        "ambito": "multidisciplinar",
+        "web": "http://www.c3a.es/",
+        "titularidad": "pública",
+        "osm": "way/181251548"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-4.78273, 37.89242] },
+      "properties": {
+        "id": "sala-hangar",
+        "nombre": "Sala Hangar",
+        "categoria": "sala",
+        "subtipo": "Sala de conciertos",
+        "ambito": "pop-rock",
+        "direccion": "Av. de la Libertad, 2",
+        "web": "http://www.salahangar.es/",
+        "titularidad": "privada",
+        "osm": "node/3787471847"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-4.77565, 37.88432] },
+      "properties": {
+        "id": "jazz-cafe",
+        "nombre": "Jazz Café",
+        "categoria": "sala",
+        "subtipo": "Club de música en directo",
+        "ambito": "jazz",
+        "telefono": "+34 957 481 473",
+        "titularidad": "privada",
+        "osm": "node/3367696084"
+      }
+    }
+  ]
+}

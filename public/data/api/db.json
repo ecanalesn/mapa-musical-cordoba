@@ -1,0 +1,16 @@
+{
+  "escuelas": [
+    {
+      "id": "academia-cordoba-music",
+      "nombre": "Academia Córdoba Music",
+      "latitud": 37.88119,
+      "longitud": -4.78767,
+      "subtipo": "Academia de música",
+      "ambito": "multidisciplinar",
+      "direccion": "C/ Virgen del Perpetuo Socorro, 2",
+      "web": "https://academiacordobamusic.com/",
+      "titularidad": "privada",
+      "osm": "node/9447996000"
+    }
+  ]
+}
