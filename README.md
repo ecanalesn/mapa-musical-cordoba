@@ -81,4 +81,4 @@ La API REST simula el contrato de un backend Java/Spring Boot: devuelve un JSON 
 
 ## Autoría
 
-[github.com/ecanalesn](https://github.com/ecanalesn)
+Desarrollado por: Estefanía Canales Fecha: 05/11/2026
