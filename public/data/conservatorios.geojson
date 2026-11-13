@@ -1,0 +1,51 @@
+{
+  "type": "FeatureCollection",
+  "name": "conservatorios",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-4.77967, 37.88288] },
+      "properties": {
+        "id": "csm-rafael-orozco",
+        "nombre": "Conservatorio Superior de Música «Rafael Orozco»",
+        "categoria": "conservatorio",
+        "subtipo": "Conservatorio superior",
+        "ambito": "clasica",
+        "direccion": "C/ Ángel de Saavedra, 1",
+        "web": "https://www.csmcordoba.com/",
+        "telefono": "+34 957 379 647",
+        "titularidad": "pública",
+        "osm": "node/12798812746"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-4.77856, 37.89287] },
+      "properties": {
+        "id": "cpm-musico-ziryab",
+        "nombre": "Conservatorio Profesional de Música «Músico Ziryab»",
+        "categoria": "conservatorio",
+        "subtipo": "Conservatorio profesional",
+        "ambito": "clasica",
+        "direccion": "Av. de los Piconeros",
+        "titularidad": "pública",
+        "osm": "way/517342142"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-4.7805, 37.88096] },
+      "properties": {
+        "id": "cpd-luis-del-rio",
+        "nombre": "Conservatorio Profesional de Danza «Luis del Río»",
+        "categoria": "conservatorio",
+        "subtipo": "Conservatorio profesional de danza",
+        "ambito": "danza",
+        "web": "https://cpdanzacordoba.com/",
+        "titularidad": "pública",
+        "osm": "node/12259665134"
+      }
+    }
+  ]
+}

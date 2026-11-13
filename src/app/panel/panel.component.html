@@ -1,0 +1,117 @@
+<header class="panel__cabecera">
+  <div>
+    <h1 class="panel__titulo">Mapa Musical <span>Córdoba</span></h1>
+    <p class="panel__subtitulo">Conservatorios, escuelas de música y salas de concierto</p>
+  </div>
+  <button
+    type="button"
+    class="panel__plegar"
+    (click)="plegado.set(!plegado())"
+    [attr.aria-expanded]="!plegado()"
+    aria-controls="panel-cuerpo"
+  >
+    {{ plegado() ? 'Mostrar filtros' : 'Ocultar' }}
+  </button>
+</header>
+
+<div id="panel-cuerpo" class="panel__cuerpo" [class.panel__cuerpo--plegado]="plegado()">
+  <label class="buscador">
+    <span class="visualmente-oculto">Buscar lugar</span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+    <input
+      type="search"
+      placeholder="Buscar por nombre o dirección…"
+      autocomplete="off"
+      [value]="store.busqueda()"
+      (input)="buscar($event)"
+    />
+  </label>
+
+  <section class="bloque" aria-labelledby="titulo-capas">
+    <h2 id="titulo-capas" class="bloque__titulo">Capas</h2>
+    <ul class="capas">
+      @for (c of categorias; track c.id) {
+        <li>
+          <label class="capa" [class.capa--apagada]="!store.capasActivas().has(c.id)">
+            <input type="checkbox" [checked]="store.capasActivas().has(c.id)" (change)="store.toggleCapa(c.id)" />
+            <span class="capa__muestra" [style.background]="c.color"></span>
+            <span class="capa__nombre">{{ c.etiqueta }}</span>
+            <span class="capa__fuente">{{ c.fuente === 'api' ? 'API REST' : 'GeoJSON' }}</span>
+            <span class="capa__conteo">{{ store.conteoPorCategoria()[c.id] }}</span>
+          </label>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <section class="bloque" aria-labelledby="titulo-ambito">
+    <h2 id="titulo-ambito" class="bloque__titulo">Ámbito musical</h2>
+    <div class="chips">
+      @for (a of ambitos; track a.id) {
+        <button
+          type="button"
+          class="chip"
+          [class.chip--activo]="store.ambitosActivos().has(a.id)"
+          [attr.aria-pressed]="store.ambitosActivos().has(a.id)"
+          (click)="store.toggleAmbito(a.id)"
+        >
+          {{ a.etiqueta }}
+        </button>
+      }
+    </div>
+    @if (store.hayFiltros()) {
+      <button type="button" class="enlace" (click)="store.limpiarFiltros()">Limpiar filtros</button>
+    }
+  </section>
+
+  <section class="bloque resultados" aria-labelledby="titulo-resultados">
+    <h2 id="titulo-resultados" class="bloque__titulo">
+      Resultados <span class="contador">{{ store.visibles().length }}</span>
+    </h2>
+    @if (store.cargando()) {
+      <p class="aviso">Cargando capas…</p>
+    } @else {
+      <ul class="lista" aria-live="polite">
+        @for (l of store.visibles(); track l.properties.id) {
+          <li>
+            <button
+              type="button"
+              class="lista__item"
+              [class.lista__item--activo]="store.seleccionadoId() === l.properties.id"
+              (click)="store.seleccionar(l.properties.id)"
+            >
+              <span class="lista__punto" [style.background]="colorDe(l.properties.categoria)"></span>
+              <span class="lista__texto">
+                <strong>{{ l.properties.nombre }}</strong>
+                <small>{{ l.properties.subtipo }}@if (l.properties.direccion) { · {{ l.properties.direccion }} }</small>
+              </span>
+            </button>
+          </li>
+        } @empty {
+          <li class="aviso">Ningún lugar coincide con la búsqueda y los filtros.</li>
+        }
+      </ul>
+    }
+  </section>
+
+  <footer class="panel__pie">
+    @switch (store.origenApi()) {
+      @case ('api') {
+        <p class="estado estado--ok">API REST conectada · escuelas en vivo</p>
+      }
+      @case ('respaldo') {
+        <p class="estado estado--aviso">API REST no disponible · escuelas desde copia local</p>
+      }
+      @case ('estatico') {
+        <p class="estado estado--info">Escuelas: datos estáticos (demo)</p>
+      }
+    }
+    @for (e of store.errores(); track e) {
+      <p class="estado estado--error">{{ e }}</p>
+    }
+    <p>
+      Datos geográficos: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>
+      contributors (ODbL).
+    </p>
+  </footer>
+</div>
