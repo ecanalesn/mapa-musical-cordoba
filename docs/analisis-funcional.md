@@ -90,7 +90,8 @@ Escenario: Abrir ficha
   Cuando pulso un marcador
   Entonces se abre una ventana con: tipo, nombre, ámbito y fuente del dato
   Y, si existen, dirección, titularidad, teléfono y web oficial
-  Y siempre un enlace "Cómo llegar" y otro "Ver en OSM"
+  Y siempre un enlace "Cómo llegar"
+  Y, si el lugar existe en OpenStreetMap, un enlace "Ver en OSM"
   Y los campos sin dato no se muestran (no aparecen vacíos)
 
 Escenario: Ubicación aproximada
@@ -194,8 +195,12 @@ Escenario: Plegar panel
 | PF-01 | HU-01 | Abrir la aplicación | 26 marcadores; contadores 3 / 12 / 11 | OK |
 | PF-02 | HU-02 | Desmarcar "Salas de concierto" | Quedan 15 resultados | OK |
 | PF-03 | HU-04 | Buscar "gongora" | 1 resultado: Teatro Góngora | OK (prueba unitaria) |
-| PF-04 | HU-05 | Ámbito "Flamenco" | 4 resultados: Fosforito, Yocanto, Paco Navarro, Aflamencar | — |
+| PF-04 | HU-05 | Ámbito "Flamenco" | 4 resultados: Fosforito, Yocanto, Paco Navarro, Aflamencar | OK (17/11/2026) |
 | PF-05 | HU-05 | "Flamenco" + buscar "teatro" | 0 resultados, mensaje de lista vacía | OK (prueba unitaria) |
-| PF-06 | HU-08 | Arrancar sin `npm run api` | Aviso de copia local; 12 escuelas visibles | — |
-| PF-08 | HU-03 | Abrir ficha de "Aflamencar" | Aviso "Ubicación aproximada" bajo la dirección | — |
+| PF-06 | HU-08 | Arrancar sin `npm run api` | Aviso de copia local; 12 escuelas visibles | OK (17/11/2026) |
 | PF-07 | HU-09 | Ancho 390 px | Sin desplazamiento horizontal; botón "Ocultar" visible | OK |
+| PF-08 | HU-03 | Abrir ficha de "Aflamencar" | Aviso "Ubicación aproximada" bajo la dirección | OK (17/11/2026) |
+
+Evidencias de la ejecución del 17/11/2026, con la API REST detenida: [PF-04](pruebas/PF-04-flamenco.jpg) · [PF-06](pruebas/PF-06-sin-api.jpg) · [PF-08](pruebas/PF-08-aflamencar.jpg).
+
+**Incidencia detectada al ejecutar PF-08:** la ficha de "Aflamencar" no muestra "Ver en OSM", pero el criterio de HU-03 decía que debía aparecer siempre. Causa: 11 de las 12 escuelas no existen en OpenStreetMap (se inventariaron a partir de sus fichas públicas), así que no tienen referencia OSM. El comportamiento de la aplicación es correcto; se corrigió la redacción del criterio de aceptación.
